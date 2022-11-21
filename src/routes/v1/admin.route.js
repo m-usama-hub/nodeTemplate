@@ -26,7 +26,7 @@ router.route('/').get(can('getDashboard'), dashboardController.getDashboard);
 // User Mangement routes
 router
   .route('/users')
-  .post(can('manageUsers'), validate(userValidation.createUser), userController.createUser)
+  .post(validate(userValidation.createUser), userController.createUser)
   .get(can('getUsers'), validate(userValidation.getUsers), userController.getUsers);
 
 router

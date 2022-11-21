@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const app = require('./app');
+const { app, http } = require('./app');
 const config = require('./config/config');
 const logger = require('./config/logger');
 const AWS = require('aws-sdk');
@@ -7,7 +7,7 @@ const AWS = require('aws-sdk');
 let server;
 mongoose.connect(config.mongoose.url, config.mongoose.options).then(() => {
   logger.info('Connected to MongoDB');
-  server = app.listen(config.port, () => {
+  server = http.listen(config.port, () => {
     logger.info(`Listening to port ${config.port}`);
   });
   const credentials = {

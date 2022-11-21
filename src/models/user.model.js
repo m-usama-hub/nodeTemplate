@@ -93,6 +93,19 @@ const userSchema = mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'Order',
     },
+    photo: {
+      type: String,
+    },
+    socketId: {
+      type: String,
+    },
+    isOnline: {
+      type: Boolean,
+      default: false,
+    },
+    deviceTokens: {
+      type: [String],
+    },
   },
   {
     timestamps: true,

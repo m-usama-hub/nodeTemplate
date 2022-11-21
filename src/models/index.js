@@ -6,3 +6,5 @@ module.exports.Campaign = require('./campaign.model');
 module.exports.Order = require('./order.model');
 module.exports.Payment = require('./payment.model');
 module.exports.Coupon = require('./coupon.model');
+module.exports.Message = require('./message.model');
+module.exports.Room = require('./room.model');

@@ -3,8 +3,10 @@ const catchAsync = require('../utils/catchAsync');
 const { authService, userService, tokenService, emailService, phoneVerificationService } = require('../services');
 const ApiError = require('../utils/ApiError');
 const moment = require('moment');
+const { getPath } = require('../utils/cloudinary');
 
 const register = catchAsync(async (req, res) => {
+  if (req.files?.photo) req.body.photo = await getPath(req.files?.photo)[0];
   const user = await userService.createUser(req.body);
   const tokens = await tokenService.generateAuthTokens(user);
   res.status(httpStatus.CREATED).send({ user, tokens });
